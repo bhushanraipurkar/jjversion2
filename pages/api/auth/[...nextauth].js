@@ -10,6 +10,13 @@ export default NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       authorizationUrl:
         'https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code',
+      authorization: {
+        params: {
+          prompt: 'consent',
+          access_type: 'offline',
+          response_type: 'code',
+        },
+      },
     }),
   ],
   jwt: {

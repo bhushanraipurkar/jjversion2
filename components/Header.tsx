@@ -146,7 +146,12 @@ const List = (): any => {
     )
   } else {
     return (
-      <Menu as="div" onClick={() => signIn()}>
+      <Menu
+        as="div"
+        onClick={() =>
+          signIn('identity-server4', null || undefined, { prompt: 'login' })
+        }
+      >
         <Menu.Button className="mt-2 active:outline-none">
           <div className="relative">
             <div

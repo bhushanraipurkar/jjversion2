@@ -17,6 +17,8 @@ export default async function handler(
   }
 
   const result = await fetch(`${process.env.API_ROOT}/user435/register`, {
+    cache: 'no-cache',
+    credentials: 'same-origin',
     headers: {
       'content-type': 'application/json',
     },

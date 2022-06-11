@@ -30,7 +30,7 @@ const Creatd: NextPage = () => {
     },
   ])
   const get__alljobs = async (email: any) => {
-    const resp1 = await fetch(`/job435/jobs/${email}`)
+    const resp1 = await fetch(`${process.env.API_ROOT}/job435/jobs/${email}`)
     const resp = await resp1.json()
     if (resp1.status == 200) {
       console.log('running')

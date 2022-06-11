@@ -33,6 +33,8 @@ export default async function handler(
 
   const indicator = toast.loading('processing')
   const result = await fetch(url, {
+    cache: 'no-cache',
+    credentials: 'same-origin',
     headers: {
       'content-type': 'application/json',
     },

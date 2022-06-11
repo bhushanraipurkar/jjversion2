@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { MouseEvent, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { useSession } from 'next-auth/react'
 
@@ -30,7 +30,12 @@ const Ajobs = ({ title }: Props) => {
   ])
 
   const get__alljobs = async () => {
-    const resp1 = await fetch(`/job435/all`)
+    // const resp1 = await fetch(`${process.env.API_ROOT}/job435/all`)
+    const resp1 = await fetch(`https://jj-two.vercel.app/job435/all`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
     const resp = await resp1.json()
     if (resp1.status == 200) {
       console.log('running')
@@ -40,6 +45,7 @@ const Ajobs = ({ title }: Props) => {
     }
     setalljobs(resp)
     console.log(resp)
+    console.log(process.env.API_ROOT)
   }
 
   useEffect(() => {
@@ -48,7 +54,7 @@ const Ajobs = ({ title }: Props) => {
 
   const apply = async (id: string) => {
     const newid = JSON.parse(id)
-    const resp = await fetch(`/job435/apply/${newid}`, {
+    const resp = await fetch(`${process.env.API_ROOT}/job435/apply/${newid}`, {
       headers: new Headers({
         'Content-Type': 'application/json',
         Accept: 'application/json',
